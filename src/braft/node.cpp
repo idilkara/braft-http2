@@ -1483,7 +1483,7 @@ struct OnRequestVoteRPCDone : public google::protobuf::Closure {
                 LOG(WARNING) << "node " << node->node_id()
                              << " received RequestVoteResponse from " << peer 
 	                         << " error: " << cntl.ErrorText();
-                //break;
+                break;
             }
             node->handle_request_vote_response(peer, term, ctx_version, response);
         } while (0);
@@ -1596,7 +1596,7 @@ struct OnPreVoteRPCDone : public google::protobuf::Closure {
                 LOG(WARNING) << "node " << node->node_id()
                              << " request PreVote from " << peer 
                              << " error: " << cntl.ErrorText();
-               // break;
+               break;
             }
             node->handle_pre_vote_response(peer, term, ctx_version, response);
         } while (0);
