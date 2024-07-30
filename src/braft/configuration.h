@@ -109,7 +109,7 @@ inline bool operator<(const PeerId& id1, const PeerId& id2) {
 }
 
 inline bool operator==(const PeerId& id1, const PeerId& id2) {
-    return (id1.addr == id2.addr && id1.idx == id2.idx);
+    return (id1.idx == id2.idx);
 }
 
 inline bool operator!=(const PeerId& id1, const PeerId& id2) {
@@ -139,12 +139,6 @@ inline bool operator<(const NodeId& id1, const NodeId& id2) {
     }
 }
 
-
-
-inline bool operator==(const PeerId& id1, const PeerId& id2) {
-
-    return (id1.idx == id2.idx);
-}
 
 inline bool operator!=(const NodeId& id1, const NodeId& id2) {
     return (id1.group_id != id2.group_id || id1.peer_id != id2.peer_id);
