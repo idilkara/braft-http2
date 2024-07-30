@@ -139,8 +139,41 @@ inline bool operator<(const NodeId& id1, const NodeId& id2) {
     }
 }
 
-inline bool operator==(const NodeId& id1, const NodeId& id2) {
-    return (id1.group_id == id2.group_id && id1.peer_id == id2.peer_id);
+
+int get_canonical_port(int port) {
+    // Define the equivalence classes
+    std::map<int, int> port_mapping = {
+        {1003, 8100},
+        {1006, 8100},
+        {8100, 8100},
+        {1001, 8101},
+        {1007, 8101},
+        {8101, 8101},
+        {1002, 8102},
+        {1005, 8102},
+        {8102, 8102}
+    };
+
+    auto it = port_mapping.find(port);
+    if (it != port_mapping.end()) {
+        return it->second;
+    }
+
+    // If the port is not in the mapping, return itself
+    return port;
+}
+
+
+inline bool operator==(const PeerId& id1, const PeerId& id2) {
+
+ // Get the canonical ports
+    int canonical_port1 = get_canonical_port(id1.addr.port);
+    int canonical_port2 = get_canonical_port(id2.addr.port);
+
+    // Compare the canonical ports and the IP addresses
+    return (id1.addr.ip == id2.addr.ip && canonical_port1 == canonical_port2 && id1.idx == id2.idx);
+
+    //return (id1.addr == id2.addr && id1.idx == id2.idx);
 }
 
 inline bool operator!=(const NodeId& id1, const NodeId& id2) {
