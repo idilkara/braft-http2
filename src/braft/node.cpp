@@ -1591,15 +1591,15 @@ struct OnPreVoteRPCDone : public google::protobuf::Closure {
     }
 
     void Run() {
-        do {
-            if (cntl.ErrorCode() != 0) {
-                LOG(WARNING) << "node " << node->node_id()
-                             << " request PreVote from " << peer 
-                             << " error: " << cntl.ErrorText() << "error Code:" << cntl.ErrorCode() ;
-               break;
-            }
+        // do {
+        //     if (cntl.ErrorCode() != 0) {
+        //         LOG(WARNING) << "node " << node->node_id()
+        //                      << " request PreVote from " << peer 
+        //                      << " error: " << cntl.ErrorText() << "error Code:" << cntl.ErrorCode() ;
+        //        break;
+        //     }
             node->handle_pre_vote_response(peer, term, ctx_version, response);
-        } while (0);
+       // } while (0);
         delete this;
     }
 
