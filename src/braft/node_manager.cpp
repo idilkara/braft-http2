@@ -133,7 +133,7 @@ scoped_refptr<NodeImpl> NodeManager::get(const GroupId& group_id, const PeerId& 
 
     
    //this should be returning
-    LOG(WARNING) << "peer ID : " << peer_id.to_string;
+    LOG(ERROR) << "peer ID : " << peer_id.to_string();
     
     NodeMap::const_iterator it = ptr->node_map.find(NodeId(group_id, peer_id));
     if (it != ptr->node_map.end()) {
