@@ -109,7 +109,7 @@ inline bool operator<(const PeerId& id1, const PeerId& id2) {
 }
 
 inline bool operator==(const PeerId& id1, const PeerId& id2) {
-    return ( && id1.idx == id2.idx);
+    return ( id1.idx == id2.idx);
 }
 
 inline bool operator!=(const PeerId& id1, const PeerId& id2) {
