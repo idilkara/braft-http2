@@ -1595,7 +1595,7 @@ struct OnPreVoteRPCDone : public google::protobuf::Closure {
             if (cntl.ErrorCode() != 0) {
                 LOG(WARNING) << "node " << node->node_id()
                              << " request PreVote from " << peer 
-                             << " error: " << cntl.ErrorText();
+                             << " error: " << cntl.ErrorText() << "error Code:" << cntl.ErrorCode() ;
                break;
             }
             node->handle_pre_vote_response(peer, term, ctx_version, response);
