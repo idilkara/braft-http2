@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Baidu.com, Inc. All Rights Reserved
+ // Copyright (c) 2015 Baidu.com, Inc. All Rights Reserved
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -104,12 +104,12 @@ inline bool operator<(const PeerId& id1, const PeerId& id2) {
     if (id1.addr < id2.addr) {
         return true;
     } else {
-        return id1.idx < id2.idx;
+        return id1.addr == id2.addr && id1.idx < id2.idx;
     }
 }
 
 inline bool operator==(const PeerId& id1, const PeerId& id2) {
-    return ( id1.idx == id2.idx);
+    return (id1.addr == id2.addr && id1.idx == id2.idx);
 }
 
 inline bool operator!=(const PeerId& id1, const PeerId& id2) {
