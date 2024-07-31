@@ -130,6 +130,11 @@ scoped_refptr<NodeImpl> NodeManager::get(const GroupId& group_id, const PeerId& 
     if (_nodes.Read(&ptr) != 0) {
         return NULL;
     }
+
+    
+   //this should be returning
+    LOG(WARNING) << "peer ID : " << peer_id.to_string;
+    
     NodeMap::const_iterator it = ptr->node_map.find(NodeId(group_id, peer_id));
     if (it != ptr->node_map.end()) {
         return it->second;
